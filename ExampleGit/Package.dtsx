@@ -11,11 +11,21 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{A937CA13-F9A7-4BF0-BBFA-6029A30805DD}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{FD592A41-B9E2-4EA5-9F35-CE15A7207B58}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-QEN4LJI.ExampleGit]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{D8FFC481-A10F-491D-9CE8-C9A6F2ACFF98}"
+      DTS:ObjectName="DESKTOP-QEN4LJI.ExampleGit">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-QEN4LJI;Initial Catalog=ExampleGit;Integrated Security=True;Application Name=SSIS-Package-{D8FFC481-A10F-491D-9CE8-C9A6F2ACFF98}DESKTOP-QEN4LJI.ExampleGit;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
       DTS:CreationName="EXCEL"
@@ -25,7 +35,31 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="0"
           DTS:ConnectRetryInterval="0"
-          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=E:\LEARN\HK1_IV\BI\Online_Retails.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=E:\LEARN\HK1_IV\BI\Online_Retails.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{A1238545-55D5-4D30-B290-5583B5836249}"
+      DTS:ObjectName="Excel Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\PC\Desktop\BI\Bài tập\Baitap3\Online_Retails.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 2]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{315EA0CF-B9AA-48F3-B153-3D7C48D87459}"
+      DTS:ObjectName="Excel Connection Manager 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\PC\Desktop\BI\Bài tập\Baitap3\Online_Retails.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -69,7 +103,7 @@
                   description="The Destination database table name."
                   expressionType="Notify"
                   name="TableOrViewName"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"Test"</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"ADO NET Destination"</property>
                 <property
                   dataType="System.Int32"
                   description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
@@ -92,8 +126,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\ADO NET Destination.Connections[IDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.DW_ETL]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DW_ETL]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-QEN4LJI.ExampleGit]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-QEN4LJI.ExampleGit]"
                   description="Managed connection manager"
                   name="IDbConnection" />
               </connections>
@@ -262,8 +296,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\Excel Source.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
-                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 2]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 2]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -355,7 +389,8 @@
                       name="InvoiceNo" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[StockCode]"
-                      dataType="r8"
+                      dataType="wstr"
+                      length="255"
                       name="StockCode" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Description]"
@@ -397,7 +432,8 @@
                       name="InvoiceNo" />
                     <outputColumn
                       refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[StockCode]"
-                      dataType="r8"
+                      dataType="wstr"
+                      length="255"
                       lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[StockCode]"
                       name="StockCode" />
                     <outputColumn
@@ -460,6 +496,21 @@
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A2C063E0-0A28-49D6-9255-44808BACC992}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -477,6 +528,10 @@
           Size="150.4,41.6"
           Id="Package\Data Flow Task"
           TopLeft="272.857147503872,107.058825030871" />
+        <NodeLayout
+          Size="159.2,41.6"
+          Id="Package\Data Flow Task 1"
+          TopLeft="80.8333301213054,46.800000371933" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -486,39 +541,39 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="138.4,41.6"
-          Id="Package\Data Flow Task\Excel Source"
-          TopLeft="167.142859989283,48.9411771569698" />
-        <NodeLayout
           Size="178.4,41.6"
           Id="Package\Data Flow Task\ADO NET Destination"
-          TopLeft="162.142859904134,173.588237728627" />
+          TopLeft="160.476193303695,170.988237707964" />
+        <NodeLayout
+          Size="140,41.6"
+          Id="Package\Data Flow Task\Excel Source"
+          TopLeft="167.142859989283,48.9411771569698" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Excel Source Output]"
-          TopLeft="236.342859989283,90.5411771569698">
+          TopLeft="237.142859989283,90.5411771569698">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="14.9999999148506,83.0470605716574"
+              EndConnector="12.5333333144117,80.4470605509943"
               Start="0,0"
-              End="14.9999999148506,75.5470605716574">
+              End="12.5333333144117,72.9470605509943">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.5235302858287" />
+                    End="0,36.2235302754971" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,37.5235302858287"
-                    Point2="0,41.5235302858287"
-                    Point3="4,41.5235302858287" />
+                    Point1="0,36.2235302754971"
+                    Point2="0,40.2235302754971"
+                    Point3="4,40.2235302754971" />
                   <mssgle:LineSegment
-                    End="10.9999999148506,41.5235302858287" />
+                    End="8.53333331441172,40.2235302754971" />
                   <mssgle:CubicBezierSegment
-                    Point1="10.9999999148506,41.5235302858287"
-                    Point2="14.9999999148506,41.5235302858287"
-                    Point3="14.9999999148506,45.5235302858287" />
+                    Point1="8.53333331441172,40.2235302754971"
+                    Point2="12.5333333144117,40.2235302754971"
+                    Point3="12.5333333144117,44.2235302754971" />
                   <mssgle:LineSegment
-                    End="14.9999999148506,75.5470605716574" />
+                    End="12.5333333144117,72.9470605509943" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -531,6 +586,14 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\Excel Source">
     <Properties>
       <Property>
@@ -540,14 +603,6 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\ADO NET Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
