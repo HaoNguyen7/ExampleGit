@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{1D42568A-170F-464A-8195-D7726DBD8451}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{A937CA13-F9A7-4BF0-BBFA-6029A30805DD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -69,7 +69,7 @@
                   description="The Destination database table name."
                   expressionType="Notify"
                   name="TableOrViewName"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."SQL DW_ETL"</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"Test"</property>
                 <property
                   dataType="System.Int32"
                   description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
@@ -191,10 +191,6 @@
                       dataType="wstr"
                       length="255"
                       name="Country" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[test]"
-                      dataType="dbTime2"
-                      name="test" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -492,37 +488,37 @@
         <NodeLayout
           Size="138.4,41.6"
           Id="Package\Data Flow Task\Excel Source"
-          TopLeft="255.000004342624,65.7647068046781" />
+          TopLeft="167.142859989283,48.9411771569698" />
         <NodeLayout
           Size="178.4,41.6"
           Id="Package\Data Flow Task\ADO NET Destination"
-          TopLeft="305.714290920569,184.294120231714" />
+          TopLeft="162.142859904134,173.588237728627" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Excel Source Output]"
-          TopLeft="324.200004342624,107.364706804678">
+          TopLeft="236.342859989283,90.5411771569698">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="70.714286577945,76.9294134270361"
+              EndConnector="14.9999999148506,83.0470605716574"
               Start="0,0"
-              End="70.714286577945,69.4294134270361">
+              End="14.9999999148506,75.5470605716574">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,34.4647067135181" />
+                    End="0,37.5235302858287" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,34.4647067135181"
-                    Point2="0,38.4647067135181"
-                    Point3="4,38.4647067135181" />
+                    Point1="0,37.5235302858287"
+                    Point2="0,41.5235302858287"
+                    Point3="4,41.5235302858287" />
                   <mssgle:LineSegment
-                    End="66.714286577945,38.4647067135181" />
+                    End="10.9999999148506,41.5235302858287" />
                   <mssgle:CubicBezierSegment
-                    Point1="66.714286577945,38.4647067135181"
-                    Point2="70.714286577945,38.4647067135181"
-                    Point3="70.714286577945,42.4647067135181" />
+                    Point1="10.9999999148506,41.5235302858287"
+                    Point2="14.9999999148506,41.5235302858287"
+                    Point3="14.9999999148506,45.5235302858287" />
                   <mssgle:LineSegment
-                    End="70.714286577945,69.4294134270361" />
+                    End="14.9999999148506,75.5470605716574" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
